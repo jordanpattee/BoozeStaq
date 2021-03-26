@@ -129,8 +129,8 @@ class guiFuncs(object):
         
                  
         tk.Label(self.frame2, text='Are you over 21 years old?',padx=10,bg=self.grey_hex,fg='black',font=(self.body_font, self.large_font)).grid(row=0,column=0)
-        tk.Button(self.frame2,text='Yes',padx=self.large_padx, wraplength=200,bg=self.grey_hex,fg='black',highlightbackground=self.grey_hex,font=(self.body_font, self.large_font),relief='flat',command=self.choose_UI).grid(row=0,column=1,sticky='se')
-        tk.Button(self.frame2,text = 'No',padx=self.large_padx,wraplength=200,bg=self.grey_hex,fg='black',highlightbackground=self.grey_hex,font=(self.body_font, self.large_font),relief='flat',command=self.timeout).grid(row=0,column=2,sticky='se')
+        tk.Button(self.frame2,text='Yes',padx=self.large_padx,pady=10, wraplength=200,bg=self.grey_hex,fg='black',highlightbackground=self.grey_hex,font=(self.body_font, self.large_font),relief='flat',command=self.choose_UI).grid(row=0,column=1,sticky='se')
+        tk.Button(self.frame2,text = 'No',padx=self.large_padx,pady=10,wraplength=200,bg=self.grey_hex,fg='black',highlightbackground=self.grey_hex,font=(self.body_font, self.large_font),relief='flat',command=self.timeout).grid(row=0,column=2,sticky='se')
       
         self.window.mainloop()
         
@@ -296,8 +296,8 @@ class guiFuncs(object):
              tk.Label(self.frame1 ,textvariable = var, wraplength=500,bg=self.grey_hex,fg='black',font=(self.body_font, self.small_font),relief='flat',pady=10,bd=0,highlightbackground=self.grey_hex).grid(row=i,column=0,sticky='w') 
 
         tk.Label(self.frame2, text='Would you like to adjust these percentages?',bg=self.grey_hex,fg='black',font=(self.body_font, self.large_font)).grid(row=0,column=0)
-        tk.Button(self.frame2,text='Yes',padx=self.large_padx, wraplength=200,bg=self.grey_hex,fg='black',highlightbackground=self.grey_hex,font=(self.body_font, self.large_font),relief='flat',command=self.new_percentages).grid(row=0,column=1,sticky='se')
-        tk.Button(self.frame2,text = 'No',padx=self.large_padx,wraplength=200,bg=self.grey_hex,fg='black',highlightbackground=self.grey_hex,font=(self.body_font, self.large_font),relief='flat',command=self.insert_cup).grid(row=0,column=2,sticky='se')
+        tk.Button(self.frame2,text='Yes',padx=self.large_padx,pady=10, wraplength=200,bg=self.grey_hex,fg='black',highlightbackground=self.grey_hex,font=(self.body_font, self.large_font),relief='flat',command=self.new_percentages).grid(row=0,column=1,sticky='se')
+        tk.Button(self.frame2,text = 'No',padx=self.large_padx,pady=10,wraplength=200,bg=self.grey_hex,fg='black',highlightbackground=self.grey_hex,font=(self.body_font, self.large_font),relief='flat',command=self.insert_cup).grid(row=0,column=2,sticky='se')
 
         self.window.mainloop()
         
@@ -308,13 +308,14 @@ class guiFuncs(object):
         self.entries = []
         for i in range(len(self.percentages)):
              var = tk.StringVar()
-             var.set(str(self.ingredients[i]))
+             var.set(str(self.ingredients[i]+':'))
              
              tk.Label(self.frame1 ,textvariable = var, wraplength=500,bg=self.grey_hex,fg='black',font=(self.body_font, self.small_font),relief='flat',pady=10,bd=0,highlightbackground=self.grey_hex).grid(row=i,column=0,sticky='w') 
-             self.entries.append(tk.Scale(self.frame1,from_=0,to=100,orient=tk.HORIZONTAL,bg=self.grey_hex,fg='black',highlightbackground=self.grey_hex))
+             self.entries.append(tk.Scale(self.frame1,from_=0,to=100,orient=tk.HORIZONTAL,length=300,bg=self.grey_hex,fg='black',highlightbackground=self.grey_hex))
              self.entries[i].grid(row=i,column=1,sticky='w')
 
-        tk.Button(self.frame1,text = 'Enter',wraplength=200,padx=200,bg=self.grey_hex,fg='black',highlightbackground=self.grey_hex,font=(self.body_font, self.large_font),relief='flat',command=self.get_percentages).grid(row=7,column=0,sticky='nswe')
+
+        tk.Button(self.frame1,text = 'Enter',wraplength=200,padx=200,pady=10,bg=self.grey_hex,fg='black',highlightbackground=self.grey_hex,font=(self.body_font, self.large_font),relief='flat',command=self.get_percentages).grid(row=7,column=0,sticky='nswe')
 
         self.window.mainloop()
         
@@ -324,8 +325,8 @@ class guiFuncs(object):
         if(sum(self.percentages)== 100):
             self.insert_cup()
         else:
-            tk.Label(self.frame3 ,text='The sum of the percentages for the ingredients must add to 100. Please adjust the percentages and press Enter'\
-                     , wraplength=500,bg=self.grey_hex,fg='black',font=(self.body_font, self.small_font),relief='flat',pady=10,bd=0,highlightbackground=self.grey_hex).grid(row=0,column=0,sticky='w') 
+            tk.Label(self.frame3 ,text='The sum of the percentages for the ingredients must add to 100. Please adjust the percentages and press "Enter"'\
+                     , wraplength=700,bg=self.grey_hex,fg='black',font=(self.body_font, self.small_font),relief='flat',pady=10,bd=0,highlightbackground=self.grey_hex).grid(row=0,column=0,sticky='w') 
 
 
     def insert_cup(self):
@@ -378,13 +379,13 @@ class guiFuncs(object):
     def drink_made(self):
         tk.Label(self.frame2, text='Your drink is ready. Make another?',bg=self.grey_hex,fg='black',font=(self.body_font, self.large_font)).grid(row=0,column=0)
         if(SUI.selected == 1):
-            tk.Button(self.frame2,text='Yes' ,padx=self.large_padx,wraplength=200,highlightbackground=self.grey_hex,bg=self.grey_hex,fg='black',font=(self.body_font, self.large_font),relief='flat',command=SUI.open_menu).grid(row=0,column=1,sticky='se')
+            tk.Button(self.frame2,text='Yes' ,padx=self.large_padx,pady=10,wraplength=200,highlightbackground=self.grey_hex,bg=self.grey_hex,fg='black',font=(self.body_font, self.large_font),relief='flat',command=SUI.open_menu).grid(row=0,column=1,sticky='se')
 
         elif(FUI.selected == 1):
-            tk.Button(self.frame2,text='Yes' ,padx=self.large_padx,wraplength=200,highlightbackground=self.grey_hex,bg=self.grey_hex,fg='black',font=(self.body_font, self.large_font),relief='flat',command=FUI.open_menu).grid(row=0,column=1,sticky='se')
+            tk.Button(self.frame2,text='Yes' ,pady=10,padx=self.large_padx,wraplength=200,highlightbackground=self.grey_hex,bg=self.grey_hex,fg='black',font=(self.body_font, self.large_font),relief='flat',command=FUI.open_menu).grid(row=0,column=1,sticky='se')
      
     
-        tk.Button(self.frame2,text = 'No',padx=self.large_padx,wraplength=200,highlightbackground=self.grey_hex,bg=self.grey_hex,fg='black',font=(self.body_font, self.large_font),relief='flat',command=self.check_age).grid(row=0,column=2,sticky='se')
+        tk.Button(self.frame2,text = 'No',padx=self.large_padx,pady=10,wraplength=200,highlightbackground=self.grey_hex,bg=self.grey_hex,fg='black',font=(self.body_font, self.large_font),relief='flat',command=self.check_age).grid(row=0,column=2,sticky='se')
         
         self.window.mainloop()
 
@@ -665,15 +666,15 @@ class flex_UI(object):
         except:
             self.bottle_config = gf.default_bottles
             
-        tk.Label(gf.frame1 ,text='Please confirm the location of the bottles', wraplength=500,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.large_font),relief='flat',pady=10,bd=0,highlightbackground=gf.grey_hex).grid(row=0,column=0,sticky='w')
+        tk.Label(gf.frame1 ,text='Please confirm the ingredient placement:', wraplength=500,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.large_font),relief='flat',pady=20,bd=0,highlightbackground=gf.grey_hex).grid(row=0,column=0,sticky='w')
             
         for i in range(len(self.bottle_config)):
             var = tk.StringVar()
             var.set(self.bottle_config[i] + ' is currently in holder ' + str(i+1))
-            tk.Label(gf.frame2 ,textvariable = var, wraplength=500,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.small_font),relief='flat',pady=10,bd=0,highlightbackground=gf.grey_hex).grid(row=i,column=0,sticky='w')
+            tk.Label(gf.frame1 ,textvariable = var, wraplength=500,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.small_font),relief='flat',pady=10,bd=0,highlightbackground=gf.grey_hex).grid(row=i+1,column=0,sticky='nsw')
         
-        tk.Button(gf.frame3,text='Confirm',command = self.prev_bottles, font=(gf.header_font, gf.large_font),bg=gf.grey_hex,bd=0,highlightbackground=gf.grey_hex).grid(row=3,column=3)
-        tk.Button(gf.frame3,text='Change Bottles',command = self.set_bottles, font=(gf.header_font, gf.large_font),bg=gf.grey_hex,bd=0,highlightbackground=gf.grey_hex).grid(row=3,column=0)
+        tk.Button(gf.frame3,text='Confirm',padx=150,command = self.prev_bottles, font=(gf.header_font, gf.large_font),bg=gf.grey_hex,bd=0,highlightbackground=gf.grey_hex).grid(row=3,column=3,sticky='e')
+        tk.Button(gf.frame3,text='Change Bottles',padx=150,command = self.set_bottles, font=(gf.header_font, gf.large_font),bg=gf.grey_hex,bd=0,highlightbackground=gf.grey_hex).grid(row=3,column=0, sticky='w')
         
     
     def set_bottles(self):
@@ -681,7 +682,7 @@ class flex_UI(object):
         gf.refresh_window()
         gf.create_frames()
         
-        tk.Label(gf.frame1, text='Please select your ingredients in the bottle holders',bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.large_font)).grid(row=0,column=0)
+        tk.Label(gf.frame1, text='Please select your ingredients in the bottle holders',pady=20,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.large_font)).grid(row=0,column=0)
         
         total_ingredients = gf.menu.iloc[:,7:13]
         total_ingredients = total_ingredients.to_numpy()
@@ -720,11 +721,11 @@ class flex_UI(object):
              self.vars.append(tk.StringVar())
              self.vars[i].set(self.bottle_config[i])
              
-             tk.Label(gf.frame2 ,textvariable = var, wraplength=500,padx=100,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.small_font),relief='flat',pady=10,bd=0,highlightbackground=gf.grey_hex).grid(row=i,column=0,sticky='w') 
-             self.entries.append(ttk.Combobox(gf.frame2,textvariable = self.vars[i],width='20',values=[ingredient_keys[i] for i in range(len(ingredient_keys))]))
-             self.entries[i].grid(row=i,column=1,sticky='w')
+             tk.Label(gf.frame1 ,textvariable = var, wraplength=500,padx=100,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.small_font),relief='flat',pady=10,bd=0,highlightbackground=gf.grey_hex).grid(row=i+1,column=0,sticky='w') 
+             self.entries.append(ttk.Combobox(gf.frame1,textvariable = self.vars[i],width='20',values=[ingredient_keys[i] for i in range(len(ingredient_keys))]))
+             self.entries[i].grid(row=i+1,column=1,sticky='w')
              
-        tk.Button(gf.frame3,text = 'Enter',wraplength=200,padx=200,bg=gf.grey_hex,fg='black',highlightbackground=gf.grey_hex,font=(gf.body_font, gf.large_font),relief='flat',command=self.get_user_ingredients).grid(row=7,column=0,sticky='nswe')
+        tk.Button(gf.frame3,text = 'Enter',wraplength=200,padx=350,pady=20,bg=gf.grey_hex,fg='black',highlightbackground=gf.grey_hex,font=(gf.body_font, gf.large_font),relief='flat',command=self.get_user_ingredients).grid(row=7,column=0,sticky='nswe')
         gf.window.mainloop()
         
     def get_user_ingredients(self,*args):
