@@ -39,12 +39,18 @@ class guiFuncs(object):
     tk.Grid.columnconfigure(window,0,weight=1)
     tk.Grid.rowconfigure(window,0,weight=1)
     
-    large_font = 14
-    small_font = 14
+    large_font = 15
+    small_font = 15
+    thumbnail_font = 14
+
     image_size = (80,80)
     header_font = 'Georgia' #serif for header text
     header_font = 'Calibri' #serif for header text
     body_font = 'Calibri' #sans serif for body text
+    
+    large_padx = 100
+
+    large_pady = 150
     
     grey_hex = '#efeff7'
     #grey_hex = '#f2f2f7'
@@ -122,9 +128,9 @@ class guiFuncs(object):
         tk.Label(self.frame1, image=main_img,bg=self.grey_hex,font=(self.header_font, self.large_font)).grid(row=0,column=0)
         
                  
-        tk.Label(self.frame2, text='Are you over 21 years old?',bg=self.grey_hex,fg='black',font=(self.body_font, self.large_font)).grid(row=0,column=0)
-        tk.Button(self.frame2,text='Yes', wraplength=200,bg=self.grey_hex,fg='black',highlightbackground=self.grey_hex,font=(self.body_font, self.large_font),relief='flat',command=self.choose_UI).grid(row=0,column=1,sticky='se')
-        tk.Button(self.frame2,text = 'No',wraplength=200,bg=self.grey_hex,fg='black',highlightbackground=self.grey_hex,font=(self.body_font, self.large_font),relief='flat',command=self.timeout).grid(row=0,column=2,sticky='se')
+        tk.Label(self.frame2, text='Are you over 21 years old?',padx=10,bg=self.grey_hex,fg='black',font=(self.body_font, self.large_font)).grid(row=0,column=0)
+        tk.Button(self.frame2,text='Yes',padx=self.large_padx, wraplength=200,bg=self.grey_hex,fg='black',highlightbackground=self.grey_hex,font=(self.body_font, self.large_font),relief='flat',command=self.choose_UI).grid(row=0,column=1,sticky='se')
+        tk.Button(self.frame2,text = 'No',padx=self.large_padx,wraplength=200,bg=self.grey_hex,fg='black',highlightbackground=self.grey_hex,font=(self.body_font, self.large_font),relief='flat',command=self.timeout).grid(row=0,column=2,sticky='se')
       
         self.window.mainloop()
         
@@ -143,8 +149,8 @@ class guiFuncs(object):
         self.create_frames()
         tk.Label(self.frame1, text='Please select an interface.',bg=self.grey_hex,fg='black',font=(self.body_font, self.large_font)).grid(row=0,column=0)
         
-        tk.Button(self.frame2,text='Standard', wraplength=200,bg=self.grey_hex,fg='black',highlightbackground=self.grey_hex,font=(self.body_font, self.large_font),relief='flat',command=SUI.open_menu).grid(row=0,column=1,sticky='se')
-        tk.Button(self.frame2,text = 'Flexible',wraplength=200,bg=self.grey_hex,fg='black',highlightbackground=self.grey_hex,font=(self.body_font, self.large_font),relief='flat',command=FUI.check_bottles).grid(row=0,column=2,sticky='se')
+        tk.Button(self.frame2,text='Standard',padx = 150,pady = self.large_pady, wraplength=200,bg=self.grey_hex,fg='black',highlightbackground=self.grey_hex,font=(self.body_font, 18),relief='flat',command=SUI.open_menu).grid(row=0,column=1,sticky='news')
+        tk.Button(self.frame2,text = 'Flexible',padx = 150,pady = self.large_pady,wraplength=200,bg=self.grey_hex,fg='black',highlightbackground=self.grey_hex,font=(self.body_font, 18),relief='flat',command=FUI.check_bottles).grid(row=0,column=2,sticky='news')
       
         self.window.mainloop()
         
@@ -290,8 +296,8 @@ class guiFuncs(object):
              tk.Label(self.frame1 ,textvariable = var, wraplength=500,bg=self.grey_hex,fg='black',font=(self.body_font, self.small_font),relief='flat',pady=10,bd=0,highlightbackground=self.grey_hex).grid(row=i,column=0,sticky='w') 
 
         tk.Label(self.frame2, text='Would you like to adjust these percentages?',bg=self.grey_hex,fg='black',font=(self.body_font, self.large_font)).grid(row=0,column=0)
-        tk.Button(self.frame2,text='Yes', wraplength=200,bg=self.grey_hex,fg='black',highlightbackground=self.grey_hex,font=(self.body_font, self.large_font),relief='flat',command=self.new_percentages).grid(row=0,column=1,sticky='se')
-        tk.Button(self.frame2,text = 'No',wraplength=200,bg=self.grey_hex,fg='black',highlightbackground=self.grey_hex,font=(self.body_font, self.large_font),relief='flat',command=self.insert_cup).grid(row=0,column=2,sticky='se')
+        tk.Button(self.frame2,text='Yes',padx=self.large_padx, wraplength=200,bg=self.grey_hex,fg='black',highlightbackground=self.grey_hex,font=(self.body_font, self.large_font),relief='flat',command=self.new_percentages).grid(row=0,column=1,sticky='se')
+        tk.Button(self.frame2,text = 'No',padx=self.large_padx,wraplength=200,bg=self.grey_hex,fg='black',highlightbackground=self.grey_hex,font=(self.body_font, self.large_font),relief='flat',command=self.insert_cup).grid(row=0,column=2,sticky='se')
 
         self.window.mainloop()
         
@@ -372,13 +378,13 @@ class guiFuncs(object):
     def drink_made(self):
         tk.Label(self.frame2, text='Your drink is ready. Make another?',bg=self.grey_hex,fg='black',font=(self.body_font, self.large_font)).grid(row=0,column=0)
         if(SUI.selected == 1):
-            tk.Button(self.frame2,text='Yes' ,wraplength=200,highlightbackground=self.grey_hex,bg=self.grey_hex,fg='black',font=(self.body_font, self.large_font),relief='flat',command=SUI.open_menu).grid(row=0,column=1,sticky='se')
+            tk.Button(self.frame2,text='Yes' ,padx=self.large_padx,wraplength=200,highlightbackground=self.grey_hex,bg=self.grey_hex,fg='black',font=(self.body_font, self.large_font),relief='flat',command=SUI.open_menu).grid(row=0,column=1,sticky='se')
 
         elif(FUI.selected == 1):
-            tk.Button(self.frame2,text='Yes' ,wraplength=200,highlightbackground=self.grey_hex,bg=self.grey_hex,fg='black',font=(self.body_font, self.large_font),relief='flat',command=FUI.open_menu).grid(row=0,column=1,sticky='se')
+            tk.Button(self.frame2,text='Yes' ,padx=self.large_padx,wraplength=200,highlightbackground=self.grey_hex,bg=self.grey_hex,fg='black',font=(self.body_font, self.large_font),relief='flat',command=FUI.open_menu).grid(row=0,column=1,sticky='se')
      
     
-        tk.Button(self.frame2,text = 'No',wraplength=200,highlightbackground=self.grey_hex,bg=self.grey_hex,fg='black',font=(self.body_font, self.large_font),relief='flat',command=self.check_age).grid(row=0,column=2,sticky='se')
+        tk.Button(self.frame2,text = 'No',padx=self.large_padx,wraplength=200,highlightbackground=self.grey_hex,bg=self.grey_hex,fg='black',font=(self.body_font, self.large_font),relief='flat',command=self.check_age).grid(row=0,column=2,sticky='se')
         
         self.window.mainloop()
 
@@ -412,11 +418,11 @@ class standard_UI(object):
 
             if (i%2 == 0):     
                 tk.Radiobutton(gf.frame1,image=gf.img_list[i],variable=self.drink_choice, value=i, bg=gf.blue_hex,bd=0,highlightbackground=gf.grey_hex).grid(row=row,column=col)
-                tk.Label(gf.frame1,text=gf.drinks[i], wraplength=100,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.small_font,'bold'),relief='flat').grid(row=row,column=col,sticky='se')
+                tk.Label(gf.frame1,text=gf.drinks[i], wraplength=100,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.thumbnail_font,'bold'),relief='flat').grid(row=row,column=col,sticky='se')
 
             else:
                 tk.Radiobutton(gf.frame1,image=gf.img_list[i],variable=self.drink_choice, value=i, bg=gf.blue2_hex,bd=0,highlightbackground=gf.grey_hex).grid(row=row,column=col)
-                tk.Label(gf.frame1,text=gf.drinks[i], wraplength=100,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.small_font,'bold'),relief='flat').grid(row=row,column=col,sticky='se')
+                tk.Label(gf.frame1,text=gf.drinks[i], wraplength=100,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.thumbnail_font,'bold'),relief='flat').grid(row=row,column=col,sticky='se')
 
             col += 1  
             
@@ -472,11 +478,11 @@ class standard_UI(object):
 
             if (i%2 == 0):     
                 tk.Radiobutton(gf.frame1,image=gf.img_list[i+8],variable=self.drink_choice, value=i, bg=gf.blue_hex,bd=0,highlightbackground=gf.grey_hex).grid(row=row,column=col)
-                tk.Label(gf.frame1,text=gf.drinks[i+8], wraplength=100,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.small_font,'bold'),relief='flat').grid(row=row,column=col,sticky='se')
+                tk.Label(gf.frame1,text=gf.drinks[i+8], wraplength=100,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.thumbnail_font,'bold'),relief='flat').grid(row=row,column=col,sticky='se')
 
             else:
                 tk.Radiobutton(gf.frame1,image=gf.img_list[i+8],variable=self.drink_choice, value=i, bg=gf.blue2_hex,bd=0,highlightbackground=gf.grey_hex).grid(row=row,column=col)
-                tk.Label(gf.frame1,text=gf.drinks[i+8], wraplength=100,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.small_font,'bold'),relief='flat').grid(row=row,column=col,sticky='se')
+                tk.Label(gf.frame1,text=gf.drinks[i+8], wraplength=100,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.thumbnail_font,'bold'),relief='flat').grid(row=row,column=col,sticky='se')
 
             col += 1  
             
@@ -532,11 +538,11 @@ class standard_UI(object):
 
             if (i%2 == 0):     
                 tk.Radiobutton(gf.frame1,image=gf.img_list[i+16],variable=self.drink_choice, value=i, bg=gf.blue_hex,bd=0,highlightbackground=gf.grey_hex).grid(row=row,column=col)
-                tk.Label(gf.frame1,text=gf.drinks[i+16], wraplength=100,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.small_font,'bold'),relief='flat').grid(row=row,column=col,sticky='se')
+                tk.Label(gf.frame1,text=gf.drinks[i+16], wraplength=100,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.thumbnail_font,'bold'),relief='flat').grid(row=row,column=col,sticky='se')
 
             else:
                 tk.Radiobutton(gf.frame1,image=gf.img_list[i+16],variable=self.drink_choice, value=i, bg=gf.blue2_hex,bd=0,highlightbackground=gf.grey_hex).grid(row=row,column=col)
-                tk.Label(gf.frame1,text=gf.drinks[i+16], wraplength=100,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.small_font,'bold'),relief='flat').grid(row=row,column=col,sticky='se')
+                tk.Label(gf.frame1,text=gf.drinks[i+16], wraplength=100,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.thumbnail_font,'bold'),relief='flat').grid(row=row,column=col,sticky='se')
 
             col += 1  
             
@@ -594,11 +600,11 @@ class standard_UI(object):
 
             if (i%2 == 0):     
                 tk.Radiobutton(gf.frame1,image=gf.img_list[i+24],variable=self.drink_choice, value=i, bg=gf.blue_hex,bd=0,highlightbackground=gf.grey_hex).grid(row=row,column=col)
-                tk.Label(gf.frame1,text=gf.drinks[i+24], wraplength=100,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.small_font,'bold'),relief='flat').grid(row=row,column=col,sticky='se')
+                tk.Label(gf.frame1,text=gf.drinks[i+24], wraplength=100,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.thumbnail_font,'bold'),relief='flat').grid(row=row,column=col,sticky='se')
 
             else:
                 tk.Radiobutton(gf.frame1,image=gf.img_list[i+24],variable=self.drink_choice, value=i, bg=gf.blue2_hex,bd=0,highlightbackground=gf.grey_hex).grid(row=row,column=col)
-                tk.Label(gf.frame1,text=gf.drinks[i+24], wraplength=100,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.small_font,'bold'),relief='flat').grid(row=row,column=col,sticky='se')
+                tk.Label(gf.frame1,text=gf.drinks[i+24], wraplength=100,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.thumbnail_font,'bold'),relief='flat').grid(row=row,column=col,sticky='se')
 
             col += 1  
             
@@ -794,11 +800,11 @@ class flex_UI(object):
 
             if (i%2 == 0):     
                 tk.Radiobutton(gf.frame1,image=self.img_list[i],variable=self.drink_choice, value=i, bg=gf.blue_hex,bd=0,highlightbackground=gf.grey_hex).grid(row=row,column=col)
-                tk.Label(gf.frame1,text=self.drinks[i], wraplength=90,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.small_font,'bold'),relief='flat').grid(row=row,column=col)
+                tk.Label(gf.frame1,text=self.drinks[i], wraplength=90,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.thumbnail_font,'bold'),relief='flat').grid(row=row,column=col)
 
             else:
                 tk.Radiobutton(gf.frame1,image=self.img_list[i],variable=self.drink_choice, value=i, bg=gf.blue2_hex,bd=0,highlightbackground=gf.grey_hex).grid(row=row,column=col)
-                tk.Label(gf.frame1,text=self.drinks[i], wraplength=90,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.small_font,'bold'),relief='flat').grid(row=row,column=col)
+                tk.Label(gf.frame1,text=self.drinks[i], wraplength=90,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.thumbnail_font,'bold'),relief='flat').grid(row=row,column=col)
 
             col += 1  
             
