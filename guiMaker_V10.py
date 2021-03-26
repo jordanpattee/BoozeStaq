@@ -228,19 +228,19 @@ class guiFuncs(object):
                     if(re.search(dry_ingred[j],ingredients[i],re.IGNORECASE) != None):
                         var = tk.StringVar()
                         var.set('Please add a/an ' +dry_ingred[j]+ ' after the drink is poured')
-                        tk.Label(self.frame1 ,textvariable = var, wraplength=500,bg=self.grey_hex,fg='black',font=(self.body_font, self.small_font),relief='flat',pady=10,bd=0,highlightbackground=self.grey_hex).grid(row=i+3,column=0,sticky='w') 
+                        tk.Label(self.frame1 ,textvariable = var, wraplength=700,bg=self.grey_hex,fg='black',font=(self.body_font, self.small_font),relief='flat',pady=10,bd=0,highlightbackground=self.grey_hex).grid(row=i+3,column=0,sticky='w') 
                
                 for j in range(len(dashed_ingred)):   
                     if(re.search(dashed_ingred[j],ingredients[i],re.IGNORECASE) != None):
                         var = tk.StringVar()
                         var.set('Please add a dash of ' + dashed_ingred[j] +' after the drink is poured')
-                        tk.Label(self.frame1 ,textvariable = var, wraplength=500,bg=self.grey_hex,fg='black',font=(self.body_font, self.small_font),relief='flat',pady=10,bd=0,highlightbackground=self.grey_hex).grid(row=i+3,column=0,sticky='w') 
+                        tk.Label(self.frame1 ,textvariable = var, wraplength=700,bg=self.grey_hex,fg='black',font=(self.body_font, self.small_font),relief='flat',pady=10,bd=0,highlightbackground=self.grey_hex).grid(row=i+3,column=0,sticky='w') 
                 
                 for j in range(len(juices)):     
                     if(re.search(juices[j],ingredients[i],re.IGNORECASE) != None):
                         var = tk.StringVar()
                         var.set('Please add '+ juices[j] +' to taste after the drink is poured')
-                        tk.Label(self.frame1 ,textvariable = var, wraplength=500,bg=self.grey_hex,fg='black',font=(self.body_font, self.small_font),relief='flat',pady=10,bd=0,highlightbackground=self.grey_hex).grid(row=i+3,column=0,sticky='w') 
+                        tk.Label(self.frame1 ,textvariable = var, wraplength=700,bg=self.grey_hex,fg='black',font=(self.body_font, self.small_font),relief='flat',pady=10,bd=0,highlightbackground=self.grey_hex).grid(row=i+3,column=0,sticky='w') 
                           
             else:
                 self.percentages.append(percentages[i])
@@ -249,7 +249,7 @@ class guiFuncs(object):
                 if(SUI.selected == 1):
                     var = tk.StringVar()
                     var.set('Please insert ' + ingredients[i] + ' into holder ' + str(bot_idx))
-                    tk.Label(self.frame1 ,textvariable = var, wraplength=500,bg=self.grey_hex,fg='black',font=(self.body_font, self.small_font),relief='flat',pady=10,bd=0,highlightbackground=self.grey_hex).grid(row=i,column=0,sticky='w')
+                    tk.Label(self.frame1 ,textvariable = var, wraplength=700,bg=self.grey_hex,fg='black',font=(self.body_font, self.small_font),relief='flat',pady=10,bd=0,highlightbackground=self.grey_hex).grid(row=i,column=0,sticky='w')
 
                 else:
                     rec = np.array(ingredients)
@@ -262,7 +262,7 @@ class guiFuncs(object):
 
                             var = tk.StringVar()
                             var.set(ingredients[i] + ' is in holder ' + str(self.fui_idxs[i]+1))
-                            tk.Label(self.frame1 ,textvariable = var, wraplength=500,bg=self.grey_hex,fg='black',font=(self.body_font, self.small_font),relief='flat',pady=10,bd=0,highlightbackground=self.grey_hex).grid(row=i,column=0,sticky='w') 
+                            tk.Label(self.frame1 ,textvariable = var, wraplength=700,bg=self.grey_hex,fg='black',font=(self.body_font, self.small_font),relief='flat',pady=10,bd=0,highlightbackground=self.grey_hex).grid(row=i,column=0,sticky='w') 
                             
                 
                 bot_idx += 1
@@ -273,17 +273,17 @@ class guiFuncs(object):
         tk.Grid.columnconfigure(self.frame2,0,weight=1) 
         if(SUI.selected ==1):
             if (SUI.shift == 0):    
-                tk.Button(self.frame2,text='Go Back to Menu', wraplength=200,bg=self.grey_hex,fg='black',font=(self.header_font,self.large_font),relief='flat',padx=100,bd=0,highlightbackground=self.grey_hex,command=SUI.open_menu).grid(row=0,column=0,sticky='e') 
+                tk.Button(self.frame2,text='Go Back to Menu', wraplength=200,bg=self.grey_hex,fg='black',font=(self.header_font,self.large_font),relief='flat',padx=100,pady=10,bd=0,highlightbackground=self.grey_hex,command=SUI.open_menu).grid(row=0,column=0,sticky='w') 
             elif(SUI.shift == 8):
-                tk.Button(self.frame2,text='Go Back to Menu', wraplength=200,bg=self.grey_hex,fg='black',font=(self.header_font,self.large_font),relief='flat',padx=100,bd=0,highlightbackground=self.grey_hex,command=SUI.page2).grid(row=0,column=0,sticky='e') 
+                tk.Button(self.frame2,text='Go Back to Menu', wraplength=200,bg=self.grey_hex,fg='black',font=(self.header_font,self.large_font),relief='flat',padx=100,pady=10,bd=0,highlightbackground=self.grey_hex,command=SUI.page2).grid(row=0,column=0,sticky='w') 
             elif(SUI.shift == 16):    
-                tk.Button(self.frame2,text='Go Back to Menu', wraplength=200,bg=self.grey_hex,fg='black',font=(self.header_font,self.large_font),relief='flat',padx=100,bd=0,highlightbackground=self.grey_hex,command=SUI.page3).grid(row=0,column=0,sticky='e') 
+                tk.Button(self.frame2,text='Go Back to Menu', wraplength=200,bg=self.grey_hex,fg='black',font=(self.header_font,self.large_font),relief='flat',padx=100,pady=10,bd=0,highlightbackground=self.grey_hex,command=SUI.page3).grid(row=0,column=0,sticky='w') 
             else:
-                tk.Button(self.frame2,text='Go Back to Menu', wraplength=200,bg=self.grey_hex,fg='black',font=(self.header_font,self.large_font),relief='flat',padx=100,bd=0,highlightbackground=self.grey_hex,command=SUI.page4).grid(row=0,column=0,sticky='e') 
+                tk.Button(self.frame2,text='Go Back to Menu', wraplength=200,bg=self.grey_hex,fg='black',font=(self.header_font,self.large_font),relief='flat',padx=100,pady=10,bd=0,highlightbackground=self.grey_hex,command=SUI.page4).grid(row=0,column=0,sticky='w') 
         else:   
-                tk.Button(self.frame2,text='Go Back to Menu', wraplength=200,bg=self.grey_hex,fg='black',font=(self.header_font,self.large_font),relief='flat',padx=100,bd=0,highlightbackground=self.grey_hex,command=FUI.open_menu).grid(row=0,column=0,sticky='e') 
+                tk.Button(self.frame2,text='Go Back to Menu', wraplength=200,bg=self.grey_hex,fg='black',font=(self.header_font,self.large_font),relief='flat',padx=100,pady=10,bd=0,highlightbackground=self.grey_hex,command=FUI.open_menu).grid(row=0,column=0,sticky='w') 
 
-        tk.Button(self.frame2,text='Continue', wraplength=200,bg=self.grey_hex,fg='black',font=(self.header_font,self.large_font),relief='flat',padx=100,bd=0,highlightbackground=self.grey_hex,command=self.modify_recipe).grid(row=0,column=1,sticky='w') 
+        tk.Button(self.frame2,text='Continue', wraplength=200,bg=self.grey_hex,fg='black',font=(self.header_font,self.large_font),relief='flat',padx=100,pady=10,bd=0,highlightbackground=self.grey_hex,command=self.modify_recipe).grid(row=0,column=1,sticky='e') 
 
         self.window.mainloop()
         
@@ -343,8 +343,8 @@ class guiFuncs(object):
             var.set(large_cup)
             tk.Label(self.frame1, textvariable = var,bg=self.grey_hex,fg='black',font=(self.body_font, self.large_font)).grid(row=0,column=0)
             
-        tk.Button(self.frame2,text = 'Go Back',wraplength=200,bg=self.grey_hex,fg='black',highlightbackground=self.grey_hex,font=(self.header_font, self.large_font),relief='flat',padx=100,command=self.drink_info).grid(row=0,column=0,sticky='w')
-        tk.Button(self.frame2,text='Make Drink', wraplength=200,bg=self.grey_hex,fg='black',highlightbackground=self.grey_hex,font=(self.header_font, self.large_font),relief='flat',padx=100,command=self.waiting_screen).grid(row=0,column=1,sticky='e')
+        tk.Button(self.frame2,text = 'Go Back',wraplength=200,bg=self.grey_hex,fg='black',highlightbackground=self.grey_hex,font=(self.header_font, self.large_font),relief='flat',padx=150,pady=gf.large_pady,command=self.drink_info).grid(row=0,column=0,sticky='w')
+        tk.Button(self.frame2,text='Make Drink', wraplength=200,bg=self.grey_hex,fg='black',highlightbackground=self.grey_hex,font=(self.header_font, self.large_font),relief='flat',padx=150,pady=gf.large_pady,command=self.waiting_screen).grid(row=0,column=1,sticky='e')
 
         self.window.mainloop()
 
