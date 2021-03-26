@@ -35,12 +35,12 @@ class guiFuncs(object):
     path = '/home/pi/Desktop/Thumbnails/'
     
     window = tk.Tk()
-    window.geometry('575x300')
+    window.geometry('800x1200')
     tk.Grid.columnconfigure(window,0,weight=1)
     tk.Grid.rowconfigure(window,0,weight=1)
     
-    large_font = 13
-    small_font = 11
+    large_font = 14
+    small_font = 14
     image_size = (80,80)
     header_font = 'Georgia' #serif for header text
     header_font = 'Calibri' #serif for header text
@@ -55,7 +55,7 @@ class guiFuncs(object):
     blue2_hex ='#14729f'
     
     # edit the following three paths to math the location of the files
-    main_image_path = '/home/pi/Desktop/main12.png'
+    main_image_path = '/home/pi/Desktop/main10.png'
     prev_set_path = '/home/pi/Desktop/recipe files/bottle_config.csv'
     main_menu_path = '/home/pi/Desktop/recipe files/updated_menu_2_28_2021V2.csv'
     
@@ -70,22 +70,7 @@ class guiFuncs(object):
             
         self.frame3 = tk.Frame(master=self.window, bg=self.grey_hex)
         self.frame3.grid(row=2, column=0, sticky='nswe')
-
-    #save jpeg from the https link locally
-    #df must include a list of links to images and corresponding drink name
-    def web_images_to_local(self,df,path):
-        
-        thumbnails =  df.Thumbnail.to_list() #list of https links
-        drinks = df.Name.to_list() #drink names
-        
-        for i in range(0,len(df)):
-            link = thumbnails[i]
-            name = drinks[i]
-            
-            image = requests.get(link).content #get the image as a byte object
-            image = Image.open(io.BytesIO(image)) #convert from bytes 
-            image.save(path+name+'.jpeg') #save the image 
-            
+       
             
     #get the names of all drinks from JPEG files in specified path    
     def get_image_names(self):
@@ -108,7 +93,7 @@ class guiFuncs(object):
             
     def get_main_image(self):
         main_img = Image.open(self.main_image_path)
-        width, height = main_img.size
+        width, height = (800,400)
         main_img = ImageTk.PhotoImage(Image.open(self.main_image_path).resize((round(width*1),round(height*1))))
         
         return main_img
@@ -178,7 +163,7 @@ class guiFuncs(object):
         for i in range(len(drinks_no_ext)):
             if(drinks_no_ext[i] in (self.menu.Name.to_list())):
                
-                size = self.image_size
+                size = (100,100)
                 img = ImageTk.PhotoImage(Image.open(path+drinks[i]).resize(size))
                 
                 img_list.append(img)
@@ -427,11 +412,11 @@ class standard_UI(object):
 
             if (i%2 == 0):     
                 tk.Radiobutton(gf.frame1,image=gf.img_list[i],variable=self.drink_choice, value=i, bg=gf.blue_hex,bd=0,highlightbackground=gf.grey_hex).grid(row=row,column=col)
-                tk.Label(gf.frame1,text=gf.drinks[i], wraplength=90,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.small_font,'bold'),relief='flat').grid(row=row,column=col,sticky='se')
+                tk.Label(gf.frame1,text=gf.drinks[i], wraplength=100,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.small_font,'bold'),relief='flat').grid(row=row,column=col,sticky='se')
 
             else:
                 tk.Radiobutton(gf.frame1,image=gf.img_list[i],variable=self.drink_choice, value=i, bg=gf.blue2_hex,bd=0,highlightbackground=gf.grey_hex).grid(row=row,column=col)
-                tk.Label(gf.frame1,text=gf.drinks[i], wraplength=90,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.small_font,'bold'),relief='flat').grid(row=row,column=col,sticky='se')
+                tk.Label(gf.frame1,text=gf.drinks[i], wraplength=100,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.small_font,'bold'),relief='flat').grid(row=row,column=col,sticky='se')
 
             col += 1  
             
@@ -487,11 +472,11 @@ class standard_UI(object):
 
             if (i%2 == 0):     
                 tk.Radiobutton(gf.frame1,image=gf.img_list[i+8],variable=self.drink_choice, value=i, bg=gf.blue_hex,bd=0,highlightbackground=gf.grey_hex).grid(row=row,column=col)
-                tk.Label(gf.frame1,text=gf.drinks[i+8], wraplength=90,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.small_font,'bold'),relief='flat').grid(row=row,column=col,sticky='se')
+                tk.Label(gf.frame1,text=gf.drinks[i+8], wraplength=100,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.small_font,'bold'),relief='flat').grid(row=row,column=col,sticky='se')
 
             else:
                 tk.Radiobutton(gf.frame1,image=gf.img_list[i+8],variable=self.drink_choice, value=i, bg=gf.blue2_hex,bd=0,highlightbackground=gf.grey_hex).grid(row=row,column=col)
-                tk.Label(gf.frame1,text=gf.drinks[i+8], wraplength=90,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.small_font,'bold'),relief='flat').grid(row=row,column=col,sticky='se')
+                tk.Label(gf.frame1,text=gf.drinks[i+8], wraplength=100,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.small_font,'bold'),relief='flat').grid(row=row,column=col,sticky='se')
 
             col += 1  
             
@@ -547,11 +532,11 @@ class standard_UI(object):
 
             if (i%2 == 0):     
                 tk.Radiobutton(gf.frame1,image=gf.img_list[i+16],variable=self.drink_choice, value=i, bg=gf.blue_hex,bd=0,highlightbackground=gf.grey_hex).grid(row=row,column=col)
-                tk.Label(gf.frame1,text=gf.drinks[i+16], wraplength=90,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.small_font,'bold'),relief='flat').grid(row=row,column=col,sticky='se')
+                tk.Label(gf.frame1,text=gf.drinks[i+16], wraplength=100,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.small_font,'bold'),relief='flat').grid(row=row,column=col,sticky='se')
 
             else:
                 tk.Radiobutton(gf.frame1,image=gf.img_list[i+16],variable=self.drink_choice, value=i, bg=gf.blue2_hex,bd=0,highlightbackground=gf.grey_hex).grid(row=row,column=col)
-                tk.Label(gf.frame1,text=gf.drinks[i+16], wraplength=90,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.small_font,'bold'),relief='flat').grid(row=row,column=col,sticky='se')
+                tk.Label(gf.frame1,text=gf.drinks[i+16], wraplength=100,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.small_font,'bold'),relief='flat').grid(row=row,column=col,sticky='se')
 
             col += 1  
             
@@ -609,11 +594,11 @@ class standard_UI(object):
 
             if (i%2 == 0):     
                 tk.Radiobutton(gf.frame1,image=gf.img_list[i+24],variable=self.drink_choice, value=i, bg=gf.blue_hex,bd=0,highlightbackground=gf.grey_hex).grid(row=row,column=col)
-                tk.Label(gf.frame1,text=gf.drinks[i+24], wraplength=90,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.small_font,'bold'),relief='flat').grid(row=row,column=col,sticky='se')
+                tk.Label(gf.frame1,text=gf.drinks[i+24], wraplength=100,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.small_font,'bold'),relief='flat').grid(row=row,column=col,sticky='se')
 
             else:
                 tk.Radiobutton(gf.frame1,image=gf.img_list[i+24],variable=self.drink_choice, value=i, bg=gf.blue2_hex,bd=0,highlightbackground=gf.grey_hex).grid(row=row,column=col)
-                tk.Label(gf.frame1,text=gf.drinks[i+24], wraplength=90,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.small_font,'bold'),relief='flat').grid(row=row,column=col,sticky='se')
+                tk.Label(gf.frame1,text=gf.drinks[i+24], wraplength=100,bg=gf.grey_hex,fg='black',font=(gf.body_font, gf.small_font,'bold'),relief='flat').grid(row=row,column=col,sticky='se')
 
             col += 1  
             
