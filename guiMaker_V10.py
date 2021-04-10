@@ -32,7 +32,7 @@ import sensors_and_motors_12_29_2020 as sm
 from collections import Counter
 
 class guiFuncs(object):
-    path = '/home/pi/Desktop/Boozestaq/Thumbnails/'
+    path = '/home/pi/Desktop/BoozeStaq/Thumbnails/'
     
     window = tk.Tk()
     window.geometry('800x1200')
@@ -61,9 +61,9 @@ class guiFuncs(object):
     blue2_hex ='#14729f'
     
     # edit the following three paths to math the location of the files
-    main_image_path = '/home/pi/Desktop/Boozestaq/main10.png'
-    prev_set_path = '/home/pi/Desktop/Boozestaq/recipe files/bottle_config.csv'
-    main_menu_path = '/home/pi/Desktop/Boozestaq/recipe files/updated_menu_2_28_2021V2.csv'
+    main_image_path = '/home/pi/Desktop/BoozeStaq/main10.png'
+    prev_set_path = '/home/pi/Desktop/BoozeStaq/recipe files/bottle_config.csv'
+    main_menu_path = '/home/pi/Desktop/BoozesStaq/recipe files/updated_menu_2_28_2021V2.csv'
     
     default_bottles = ['Gin','Tequila','Sweet Vermouth','Bourbon','Whiskey','Amaretto']
 
