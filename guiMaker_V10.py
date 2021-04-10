@@ -63,7 +63,7 @@ class guiFuncs(object):
     # edit the following three paths to math the location of the files
     main_image_path = '/home/pi/Desktop/BoozeStaq/main10.png'
     prev_set_path = '/home/pi/Desktop/BoozeStaq/recipe files/bottle_config.csv'
-    main_menu_path = '/home/pi/Desktop/BoozesStaq/recipe files/updated_menu_2_28_2021V2.csv'
+    main_menu_path = '/home/pi/Desktop/BoozeStaq/recipe files/updated_menu_2_28_2021V2.csv'
     
     default_bottles = ['Gin','Tequila','Sweet Vermouth','Bourbon','Whiskey','Amaretto']
 
