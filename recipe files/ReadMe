@@ -1,0 +1,2 @@
+Older versions of recipe library obtained from TheCocktailDB. Users can replace the contents of the file menu_32.csv with other drink options. 
+Users may need to add string handling code for dry ingredients to the drink_info() function in guiMaker.py.
